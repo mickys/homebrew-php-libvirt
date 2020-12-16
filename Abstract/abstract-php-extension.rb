@@ -55,7 +55,8 @@ class AbstractPhpExtension < Formula
   end
 
   def php_formula
-    "php" + php_branch.sub(".", "")
+#    "php" + php_branch.sub(".", "")
+    "php@" + php_branch
   end
 
   def safe_phpize
@@ -236,15 +237,15 @@ class AbstractPhp72Extension < AbstractPhpExtension
 
   def self.init(opts = [])
     super()
-    depends_on "php" => opts if build.with?("homebrew-php")
+    depends_on "php72" => opts if build.with?("homebrew-php")
   end
 end
 
-class AbstractPhp73Extension < AbstractPhpExtension
-  include AbstractPhpVersion::Php73Defs
+class AbstractPhp74Extension < AbstractPhpExtension
+  include AbstractPhpVersion::Php74Defs
 
   def self.init(opts = [])
     super()
-    depends_on "php" => opts if build.with?("homebrew-php")
+    depends_on "php@7.4" => opts if build.with?("homebrew-php")
   end
 end
